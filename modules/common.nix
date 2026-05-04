@@ -14,6 +14,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Users
+  users.users.kylan = {
+    isNormalUser = true;
+    description = "Kylan";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
   # Shell
   programs.zsh.enable = true;
   users.users.kylan.shell = pkgs.zsh;

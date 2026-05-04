@@ -15,7 +15,6 @@
     enable = true;
     videoDrivers = [ "nvidia" ];
   };
-
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
@@ -24,29 +23,20 @@
     open = false;
     nvidiaSettings = true;
   };
-
   hardware.graphics.enable32Bit = true;
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Power Settings
   powerManagement.enable = true;
   services.logind.lidSwitch = "ignore";
-
   systemd.sleep.extraConfig = ''
     AllowHibernation=no
     AllowSuspend=yes
   '';
-
-  services.xserver.displayManager.setupCommands = ''
-    xset s 300 300
-    xset dpms 300 300 300
-  '';
-
-  # Users
-  users.users.kylan = {
-    isNormalUser = true;
-    description = "Kylan";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
 
   # Programs
   environment.systemPackages = with pkgs; [
