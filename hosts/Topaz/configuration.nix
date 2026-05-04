@@ -30,6 +30,16 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
+  # Audio
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
+  hardware.pulseaudio.enable = false;
+
   # Power Settings
   powerManagement.enable = true;
   services.logind.lidSwitch = "ignore";
