@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   # ZSH Shell
   programs.zsh = {
@@ -9,7 +9,7 @@
         plugins = [ "git" ];
     };
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#$(hostname)";
+      rebuild = ''find ~ -name "*.backup" -delete && sudo nixos-rebuild switch --flake ~/.config/nixos#topaz'';
     };
     plugins = [
         {

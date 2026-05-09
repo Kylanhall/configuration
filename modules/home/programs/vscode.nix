@@ -9,6 +9,9 @@
       # Web languages
       bradlc.vscode-tailwindcss
 
+      # Nix
+      jnoortheen.nix-ide
+
       # General
       pkief.material-icon-theme
       christian-kohler.path-intellisense
@@ -91,6 +94,8 @@
       "explorer.confirmDelete" = false;
       "breadcrumbs.enabled" = true;
       "workbench.startupEditor" = "none";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nixd";
     };
   };
 }

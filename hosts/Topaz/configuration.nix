@@ -29,6 +29,15 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+  boot.extraModprobeConfig = ''
+    options btusb enable_autosuspend=n
+  '';
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    config.common.default = "kde";
+  };
 
   # Audio
   services.pipewire = {
@@ -40,19 +49,40 @@
   };
   hardware.pulseaudio.enable = false;
 
+  # Mouse Acceleration
+  services.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "-0.3";
+    };
+  };
+
   # Power Settings
   powerManagement.enable = true;
-  services.logind.lidSwitch = "ignore";
   systemd.sleep.extraConfig = ''
     AllowHibernation=no
-    AllowSuspend=yes
+    AllowSuspend=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
   '';
+  services.logind = {
+    lidSwitch = "ignore";
+    extraConfig = ''
+      HandleSuspendKey=ignore
+      HandleHibernateKey=ignore
+      HandleLidSwitch=ignore
+      IdleAction=ignore
+    '';
+  };
 
   # Programs
   environment.systemPackages = with pkgs; [
+    kdePackages.kate
+    vscode
     prismlauncher
   ];
-  programs.steam.enable = true;
 
+  programs.steam.enable = true;
   system.stateVersion = "24.11";
 }

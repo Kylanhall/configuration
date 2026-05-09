@@ -26,7 +26,6 @@
   users.users.kylan.shell = pkgs.zsh;
 
   # Common packages on all machines
-  programs.firefox.enable = true;
   services.tailscale.enable = true;
   environment.systemPackages = with pkgs; [
     vim
@@ -40,6 +39,9 @@
     tree
     tigervnc
     dracula-theme
+    dbeaver-bin
+    pavucontrol
+    nixd
 
     # Common programs for all machines
     vscode
@@ -52,10 +54,14 @@
     obsidian
     figma-linux
     kdePackages.kcalc
+    filezilla
+    google-chrome
+    ghostty
   ];
 
   fonts.packages = with pkgs; [
     jetbrains-mono
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; })
   ];
 
   nixpkgs.config.allowUnfree = true;

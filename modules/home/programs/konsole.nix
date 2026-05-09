@@ -111,7 +111,7 @@
         colorScheme = "Dracula";
         font = {
           name = "JetBrains Mono";
-          size = 13;
+          size = 11;
         };
       };
     };

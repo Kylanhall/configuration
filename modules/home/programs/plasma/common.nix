@@ -2,34 +2,35 @@
 {
   programs.plasma = {
     enable = true;
+    shortcuts = {
+      "spectacle"."RectangularRegionScreenshot" = ["Ctrl+Shift+4" "Meta+Shift+Print"];
+      "krunner.desktop"."_launch" = [];
+    };
     workspace = {
       wallpaper = "${config.home.homeDirectory}/.config/nixos/wallpapers/sonic.png";
-      colorScheme = "BreezeDark";
+      colorScheme = "DraculaSolid";
+      cursor = {
+        theme = "Quintom_Ink";
+        size = 24;
+      };
     };
-    panels = [
-      {
-        location = "top";
-        height = 28;
-        widgets = [
-          "org.kde.plasma.panelspacer"
-          {
-            name = "org.kde.plasma.digitalclock";
-            config.Appearance = {
-              showDate = "true";
-              dateFormat = "shortDate";
-            };
-          }
-          "org.kde.plasma.panelspacer"
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.lock_logout"
-        ];
-      }
-    ];
+    hotkeys.commands."rofi-launch" = {
+      name = "Launch Rofi";
+      key = "Alt+Space";
+      command = "rofi -show drun";
+    };
+    configFile."powermanagementprofilesrc"."AC"."brightness".value = "100";
+    configFile."powermanagementprofilesrc"."Battery"."brightness".value = "100";
+    configFile."krunnerrc"."General"."activateWhenTypingOnDesktop".value = "false";
   };
 
   # Dark mode
   gtk.enable = true;
-  gtk.theme.name = "Breeze-Dark";
+  gtk.theme = {
+    name = "Dracula";
+    package = pkgs.dracula-theme;
+  };
+
   qt = {
     enable = true;
     platformTheme.name = "kde";
