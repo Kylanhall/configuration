@@ -10,12 +10,14 @@ in
     ./programs/ghostty.nix
     ./programs/waybar.nix
     ./programs/rofi.nix
+    ./programs/swaync.nix
+    ./programs/neovim.nix
   ];
 
   home.username = secrets.username;
   home.homeDirectory = "/home/${secrets.username}";
   home.file."code/.keep".text = "";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   # Save screenshot to clipboard
   xdg.configFile."spectaclerc".text = ''
@@ -84,11 +86,12 @@ in
   # Auto-Start Discord
   systemd.user.services.discord = {
     Unit = {
-      Description = "Discord";
+      Description = "Vesktop";
+      PartOf = [ "graphical-session.target" ];
       After = "graphical-session.target";
     };
     Service = {
-      ExecStart = "${pkgs.discord}/bin/discord";
+      ExecStart = "${pkgs.vesktop}/bin/vesktop";
       Restart = "on-failure";
     };
     Install = {

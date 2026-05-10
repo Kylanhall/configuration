@@ -28,7 +28,7 @@
   # Common packages on all machines
   services.tailscale.enable = true;
   environment.systemPackages = with pkgs; [
-    vim
+    # CLI Tools
     wget
     git
     curl
@@ -37,34 +37,47 @@
     neofetch
     btop
     tree
-    tigervnc
-    dracula-theme
-    dbeaver-bin
-    pavucontrol
-    nixd
+    tmux
+    samba
 
-    # Common programs for all machines
-    vscode
-    discord
-    thunderbird
+    # Programming Languages
+    nixd
+    go
+    nodejs_22
+    nodePackages.typescript
+    nodePackages.ts-node
+    python3
+    python3Packages.pip
     dotnet-sdk_10
+
+    # GUI Applications
+    vscode
+    vesktop
+    thunderbird
     jetbrains.rider
+    dbeaver-bin
+    tigervnc
     spotify
     bitwarden-desktop
     obsidian
     figma-linux
-    kdePackages.kcalc
+    qalculate-gtk
     filezilla
     google-chrome
     ghostty
+    bolt-launcher
+    pavucontrol
+    libnotify
+    kdePackages.kdenetwork-filesharing
   ];
 
   fonts.packages = with pkgs; [
     jetbrains-mono
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
   ];
 
+  services.samba-wsdd.enable = true;
   nixpkgs.config.allowUnfree = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

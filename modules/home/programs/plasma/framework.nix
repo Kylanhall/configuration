@@ -1,4 +1,7 @@
 { config, pkgs, lib, ... }:
+let 
+  commonLaunchers = import ./common-dock.nix;
+in
 {
   programs.plasma = {
     panels = [
@@ -14,21 +17,7 @@
             name = "org.kde.plasma.icontasks";
             config = {
               General = {
-                launchers = [
-                  "applications:google-chrome.desktop"
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:bitwarden.desktop"
-                  "applications:thunderbird.desktop"
-                  "applications:org.kde.kcalc.desktop"
-                  "applications:code.desktop"
-                  "applications:rider.desktop"
-                  "applications:dbeaver.desktop"
-                  "applications:figma-linux.desktop"
-                  "applications:org.kde.konsole.desktop"
-                  "applications:obsidian.desktop"
-                  "applications:spotify.desktop"
-                  "applications:discord.desktop"
-                ];
+                launchers = commonLaunchers;
               };
             };
           }

@@ -7,6 +7,12 @@
 
   networking.hostName = "Topaz";
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
+  services.dbus.enable = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -14,6 +20,7 @@
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
+    xkb.options = "ctrl:nocaps";
   };
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -25,6 +32,15 @@
   };
   hardware.graphics.enable32Bit = true;
 
+  # SSH
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "no";
+    };
+  };
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -35,7 +51,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     config.common.default = "kde";
   };
 
@@ -47,7 +63,7 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Mouse Acceleration
   services.libinput = {
@@ -78,11 +94,9 @@
 
   # Programs
   environment.systemPackages = with pkgs; [
-    kdePackages.kate
-    vscode
     prismlauncher
   ];
-
   programs.steam.enable = true;
-  system.stateVersion = "24.11";
+
+  system.stateVersion = "25.05";
 }

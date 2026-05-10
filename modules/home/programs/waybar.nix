@@ -1,4 +1,7 @@
 { config, pkgs, lib, ... }:
+let 
+  secrets = import ../../../secrets.nix;
+in 
 {
   xdg.configFile."waybar/config".text = ''
     [
@@ -7,11 +10,11 @@
         "position": "top",
         "height": 32,
         "spacing": 6,
-        "modules-left": [],
+        "modules-left": ["custom/launcher", "custom/weather", "mpris" ],
         "modules-center": ["clock"],
-        "modules-right": ["custom/tailscale", "pulseaudio", "network", "bluetooth", "tray"],
+        "modules-right": ["custom/tailscale", "tray", "pulseaudio", "network", "custom/swaync" ],
         "clock": {
-          "format": "{:%a %b %d  %H:%M}",
+          "format": "{:%a %b %d  %I:%M %p}",
           "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
         },
         "pulseaudio": {
@@ -25,14 +28,46 @@
           "format-ethernet": "󰈀 Wired",
           "format-disconnected": "󰤭 Off"
         },
-        "bluetooth": {
-          "format": "󰂯",
-          "format-connected": "󰂱 {device_alias}",
-          "on-click": "blueman-manager"
+        "custom/swaync": {
+          "tooltip": false,
+          "format": "{icon}",
+          "format-icons": {
+            "notification": "<U+F0A2><span foreground='red'><sup><U+F444></sup></span>",
+            "none": "<U+F0A2>",
+            "dnd-notification": "<U+F1F7><span foreground='red'><sup><U+F444></sup></span>",
+            "dnd-none": "<U+F1F7>",
+            "inhibited-notification": "<U+F0A2><span foreground='red'><sup><U+F444></sup></span>",
+            "inhibited-none": "<U+F0A2>",
+            "dnd-inhibited-notification": "<U+F1F7><span foreground='red'><sup><U+F444></sup></span>",
+            "dnd-inhibited-none": "<U+F1F7>"
+          },
+          "return-type": "json",
+          "exec-if": "which swaync-client",
+          "exec": "swaync-client -swb",
+          "on-click": "swaync-client -t -sw",
+          "on-click-right": "swaync-client -d -sw",
+          "escape": true
         },
         "custom/tailscale": {
           "exec": "tailscale status --json | python3 -c \"import sys,json; s=json.load(sys.stdin); print('󰖂 Up' if s.get('BackendState')=='Running' else '󰖂 Down')\"",
           "interval": 10,
+          "tooltip": false
+        },
+        "mpris": {
+          "format": "{player_icon} {title} — {artist}",
+          "format-paused": "{player_icon} {title} — {artist}",
+          "player-icons": {
+            "spotify": "",
+            "default": "▶"
+          },
+          "status-icons": {
+            "paused": "⏸"
+          },
+          "max-length": 40,
+        },
+        "custom/weather": {
+          "exec": "curl -s 'https://wttr.in/${secrets.weatherLocation}?format=%c+%t' | tr -d '+'",
+          "interval": 1800,
           "tooltip": false
         },
         "tray": { "spacing": 8 }
@@ -51,18 +86,28 @@
 
     #custom-tailscale {
       padding: 0 12px;
+      color: #f8f8f2;
+    }
+
+    #custom-swaync {
+      font-family: "NotoSansMono Nerd Font";
+      padding: 0 12px;
       color: #cdd6f4;
     }
 
+    #mpris, #custom-weather {
+      padding: 0 12px;
+      color: #f8f8f2;
+    }
+
     window#waybar.top {
-      background: rgba(20, 20, 30, 0.85);
-      color: #cdd6f4;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: #1e1f2e;
+      color: #f8f8f2;
     }
 
     #clock, #pulseaudio, #network, #bluetooth, #tray {
       padding: 0 12px;
-      color: #cdd6f4;
+      color: #f8f8f2;
     }
 
     #clock { font-weight: 600; }
