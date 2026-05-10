@@ -15,7 +15,7 @@ in
         "modules-right": ["custom/tailscale", "tray", "pulseaudio", "network", "custom/swaync" ],
         "clock": {
           "format": "{:%a %b %d  %I:%M:%S %p}",
-          "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+          "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
           "interval": 1
         },
         "pulseaudio": {
@@ -64,7 +64,7 @@ in
           "status-icons": {
             "paused": "⏸"
           },
-          "max-length": 40,
+          "max-length": 40
         },
         "custom/weather": {
           "exec": "curl -s 'https://wttr.in/${secrets.weatherLocation}?format=%c+%t' | tr -d '+'",
