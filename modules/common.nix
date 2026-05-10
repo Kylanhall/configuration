@@ -39,6 +39,7 @@
     tree
     tmux
     samba
+    speedtest-go
 
     # Programming Languages
     nixd
