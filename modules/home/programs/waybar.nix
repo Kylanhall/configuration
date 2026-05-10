@@ -14,8 +14,9 @@ in
         "modules-center": ["clock"],
         "modules-right": ["custom/tailscale", "tray", "pulseaudio", "network", "custom/swaync" ],
         "clock": {
-          "format": "{:%a %b %d  %I:%M %p}",
+          "format": "{:%a %b %d  %I:%M:%S %p}",
           "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+          "interval": 1
         },
         "pulseaudio": {
           "format": "{icon} {volume}%",

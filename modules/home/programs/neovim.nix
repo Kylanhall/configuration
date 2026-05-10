@@ -14,6 +14,7 @@
       lua-language-server
       omnisharp-roslyn
       gopls             # Go
+      wl-clipboard
 
       # Tools
       ripgrep
