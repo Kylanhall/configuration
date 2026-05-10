@@ -33,14 +33,14 @@ in
           "tooltip": false,
           "format": "{icon}",
           "format-icons": {
-            "notification": "<U+F0A2><span foreground='red'><sup><U+F444></sup></span>",
-            "none": "<U+F0A2>",
-            "dnd-notification": "<U+F1F7><span foreground='red'><sup><U+F444></sup></span>",
-            "dnd-none": "<U+F1F7>",
-            "inhibited-notification": "<U+F0A2><span foreground='red'><sup><U+F444></sup></span>",
-            "inhibited-none": "<U+F0A2>",
-            "dnd-inhibited-notification": "<U+F1F7><span foreground='red'><sup><U+F444></sup></span>",
-            "dnd-inhibited-none": "<U+F1F7>"
+            "notification": "󰂚",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂚",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
           },
           "return-type": "json",
           "exec-if": "which swaync-client",

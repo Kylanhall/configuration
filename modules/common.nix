@@ -69,6 +69,7 @@
     pavucontrol
     libnotify
     kdePackages.kdenetwork-filesharing
+    playerctl
   ];
 
   fonts.packages = with pkgs; [
