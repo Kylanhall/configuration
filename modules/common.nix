@@ -49,7 +49,14 @@
     nodePackages.ts-node
     python3
     python3Packages.pip
-    dotnet-sdk_10
+
+    # Fucking Microsoft...
+    # Csharp-ls Needs .NET 9, .NET 10 is current, .NET 8 is LTS.... FU Microsoft, this is stupid
+    (dotnetCorePackages.combinePackages [
+      dotnet-sdk_10
+      dotnet-sdk_9
+      dotnet-sdk_8
+    ])
 
     # GUI Applications
     vscode

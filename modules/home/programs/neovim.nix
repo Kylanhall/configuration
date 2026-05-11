@@ -12,7 +12,7 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted  # HTML, CSS, JS
       lua-language-server
-      omnisharp-roslyn
+      csharp-ls
       gopls             # Go
       wl-clipboard
 
@@ -117,7 +117,9 @@
       lspconfig.eslint.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
-      lspconfig.omnisharp.setup({ capabilities = capabilities })
+      lspconfig.csharp_ls.setup({ 
+        capabilities = capabilities,
+      })
 
       -- Completion
       local cmp = require("cmp")
