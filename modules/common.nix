@@ -34,7 +34,7 @@
     curl
     nmap
     dig
-    neofetch
+    fastfetch
     btop
     tree
     tmux
