@@ -15,6 +15,11 @@
       csharp-ls
       gopls             # Go
       wl-clipboard
+      vue-language-server
+
+      # Formatters / tools
+      nodePackages.prettier
+      nodePackages.eslint
 
       # Tools
       ripgrep
@@ -31,6 +36,7 @@
       nvim-lspconfig
       nvim-cmp
       cmp-nvim-lsp
+      conform-nvim
       luasnip
       nvim-treesitter.withAllGrammars
       gitsigns-nvim
@@ -82,6 +88,9 @@
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+      vim.keymap.set("n", "<leader>f", function()
+        require("conform").format({ async = true })
+      end)
 
       -- Lualine
       require("lualine").setup({
@@ -115,6 +124,7 @@
       lspconfig.html.setup({ capabilities = capabilities })
       lspconfig.cssls.setup({ capabilities = capabilities })
       lspconfig.eslint.setup({ capabilities = capabilities })
+      lspconfig.vue_ls.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
       lspconfig.csharp_ls.setup({ 
@@ -125,6 +135,26 @@
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
+      -- Formatting
+      require("conform").setup({
+        formatters_by_ft = {
+          vue = { "prettier" },
+          typescript = { "prettier" },
+          javascript = { "prettier" },
+          css = { "prettier" },
+          scss = { "prettier" },
+          html = { "prettier" },
+          json = { "prettier" },
+          markdown = { "prettier" },
+          nix = { "prettier" },
+        },
+
+        format_on_save = {
+          timeout_ms = 1000,
+          lsp_fallback = true,
+        },
+        })
+
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -134,7 +164,7 @@
         mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<Tab>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete(),
         }),
         sources = cmp.config.sources({
