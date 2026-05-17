@@ -9,6 +9,7 @@ in
         "layer": "top",
         "position": "top",
         "height": 32,
+        "exclusive": true,
         "spacing": 6,
         "modules-left": ["custom/launcher", "custom/weather", "mpris" ],
         "modules-center": ["clock"],

@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/common.nix
+    ../../modules/nas.nix
   ];
 
   networking.hostName = "Topaz";

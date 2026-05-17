@@ -40,6 +40,7 @@
     tmux
     samba
     speedtest-go
+    cifs-utils
 
     # Programming Languages
     nixd

@@ -42,6 +42,12 @@ in
       "github.com" = {
         identityFile = "~/.ssh/${secrets.sshKeyName}";
         user = "git";
+        identitiesOnly = true;
+      };
+      "*" = {
+        identityFile = "~/.ssh/${secrets.sshKeyName}";
+        user = "kylan";
+        identitiesOnly = true;
       };
     };
   };

@@ -120,11 +120,35 @@
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       lspconfig.nixd.setup({ capabilities = capabilities })
-      lspconfig.ts_ls.setup({ capabilities = capabilities })
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "vue",
+        },
+        root_dir = lspconfig.util.root_pattern(
+          "package.json",
+          "tsconfig.json",
+          "jsconfig.json",
+          ".git"
+        ),
+      })
       lspconfig.html.setup({ capabilities = capabilities })
       lspconfig.cssls.setup({ capabilities = capabilities })
       lspconfig.eslint.setup({ capabilities = capabilities })
-      lspconfig.vue_ls.setup({ capabilities = capabilities })
+      lspconfig.volar.setup({
+        capabilities = capabilities,
+        filetypes = { "vue" },
+        root_dir = lspconfig.util.root_pattern(
+          "package.json",
+          "vite.config.ts",
+          "vite.config.js",
+          ".git"
+        ),
+      })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
       lspconfig.csharp_ls.setup({ 
