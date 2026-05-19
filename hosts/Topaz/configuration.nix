@@ -42,6 +42,15 @@
     };
   };
 
+  # Minecraft
+  networking.firewall.allowedTCPPorts = [
+    25565
+  ];
+
+  networking.firewall.allowedUDPPorts = [
+    25565
+  ];
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
