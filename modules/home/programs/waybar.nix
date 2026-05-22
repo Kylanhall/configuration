@@ -13,7 +13,7 @@ in
         "spacing": 6,
         "modules-left": ["custom/launcher", "custom/weather", "mpris" ],
         "modules-center": ["clock"],
-        "modules-right": ["custom/tailscale", "tray", "pulseaudio", "memory" , "network", "custom/swaync" ],
+        "modules-right": [ "memory" , "network", "custom/tailscale", "pulseaudio", "tray", "custom/swaync" ],
         "clock": {
           "format": "{:%a %b %d  %I:%M:%S %p}",
           "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
