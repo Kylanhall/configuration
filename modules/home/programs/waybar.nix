@@ -13,7 +13,7 @@ in
         "spacing": 6,
         "modules-left": ["custom/launcher", "custom/weather", "mpris" ],
         "modules-center": ["clock"],
-        "modules-right": ["custom/tailscale", "tray", "pulseaudio", "network", "custom/swaync" ],
+        "modules-right": ["custom/tailscale", "tray", "pulseaudio", "memory" , "network", "custom/swaync" ],
         "clock": {
           "format": "{:%a %b %d  %I:%M:%S %p}",
           "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
@@ -29,6 +29,11 @@ in
           "format-wifi": "󰤨 {essid}",
           "format-ethernet": "󰈀 Wired",
           "format-disconnected": "󰤭 Off"
+        },
+        "memory": {
+          "interval": 5,
+          "format": "RAM {used:0.1f}G / {total:0.1f}G",
+          "tooltip-format": "Memory: {used:0.1f}G used / {total:0.1f}G\nAvailable: {avail:0.1f}G\nUsed: {percentage}%"
         },
         "custom/swaync": {
           "tooltip": false,
@@ -95,6 +100,10 @@ in
       font-family: "NotoSansMono Nerd Font";
       padding: 0 12px;
       color: #cdd6f4;
+    }
+
+    #memory {
+      padding: 0 10px;
     }
 
     #mpris, #custom-weather {
