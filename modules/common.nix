@@ -81,6 +81,7 @@
     libnotify
     kdePackages.kdenetwork-filesharing
     playerctl
+    obs-studio
   ];
 
   fonts.packages = with pkgs; [
