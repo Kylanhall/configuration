@@ -82,12 +82,19 @@
     kdePackages.kdenetwork-filesharing
     playerctl
     obs-studio
+    libreoffice-qt
   ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "corefonts"
+    ];
 
   fonts.packages = with pkgs; [
     jetbrains-mono
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
+    corefonts
   ];
 
   services.samba-wsdd.enable = true;
