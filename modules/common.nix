@@ -41,6 +41,7 @@
     samba
     speedtest-go
     cifs-utils
+    unzip
 
     # Programming Languages
     nixd
@@ -67,7 +68,6 @@
     thunderbird
     jetbrains.rider
     dbeaver-bin
-    tigervnc
     spotify
     bitwarden-desktop
     obsidian
@@ -83,6 +83,8 @@
     playerctl
     obs-studio
     libreoffice-qt
+    telegram-desktop
+    remmina
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

@@ -39,17 +39,66 @@ in
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "github.com" = {
-        identityFile = "~/.ssh/${secrets.sshKeyName}";
+      "${secrets.github1}" = {
+        hostname = "github.com";
         user = "git";
+        identityFile = "~/.ssh/${secrets.sshKeyName}";
         identitiesOnly = true;
       };
-      "*" = {
+      "${secrets.github2}" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/${secrets.sshKeyName2}";
+        identitiesOnly = true;
+      };
+      "* !${secrets.github1} !${secrets.github2}" = {
         identityFile = "~/.ssh/${secrets.sshKeyName}";
-        user = "kylan";
+        user = "${secrets.username}";
         identitiesOnly = true;
       };
     };
+  };
+
+  # Git
+  programs.git = {
+    enable = true;
+
+    userName = secrets.git1User;
+    userEmail = secrets.git1Email;
+
+    extraConfig = {
+      init.defaultBranch = "main";
+      pull.rebase = false;
+    };
+
+    includes = [
+      {
+        condition = "gitdir:/home/${secrets.username}/code/work/";
+        contents = {
+          user = {
+            name = secrets.git1User;
+            email = secrets.git1Email;
+          };
+
+          url = {
+            "git@${secrets.github1}:".insteadOf = "git@github.com:";
+          };
+        };
+      }
+       {
+         condition = "gitdir:/home/${secrets.username}/code/misc/";
+         contents = {
+           user = {
+             name = secrets.git2User;
+             email = secrets.git2Email;
+           };
+
+           url = {
+             "git@${secrets.github2}:".insteadOf = "git@github.com:";
+           };
+         };
+       }
+    ];
   };
 
   # Waybar
@@ -77,18 +126,6 @@ in
       Restart = "no";
     };
   };
-
-  # Git
-  programs.git = {
-    enable = true;
-    userName = secrets.gitUser;
-    userEmail = secrets.gitEmail;
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = false;
-    };
-  };
-
   # Auto-Start Discord
   systemd.user.services.discord = {
     Unit = {

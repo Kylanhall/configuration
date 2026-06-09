@@ -12,6 +12,8 @@
       rebuild = ''find ~ -name "*.backup" -delete && sudo nixos-rebuild switch --flake ~/.config/nixos#topaz'';
       speedtest = "speedtest-go";
       neofetch = "fastfetch";
+      misc = "cd ~/code/misc";
+      work = "cd ~/code/work";
     };
     plugins = [
         {
