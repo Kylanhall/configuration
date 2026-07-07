@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let 
-  secrets = import ../../../secrets.nix;
+  secrets = import ../../nixos-local/secrets.nix;
 in 
 {
   xdg.configFile."waybar/config".text = ''
