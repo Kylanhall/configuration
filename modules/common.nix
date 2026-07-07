@@ -25,6 +25,30 @@
   programs.zsh.enable = true;
   users.users.kylan.shell = pkgs.zsh;
 
+  # Virtulization
+  virtualisation.libvirtd.enable = true;
+
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fontconfig
+    freetype
+    libGL
+    libglvnd
+
+    xorg.libX11
+    xorg.libXext
+    xorg.libXcursor
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXinerama
+    xorg.libxcb
+    xorg.libICE
+    xorg.libSM
+  ];
+
   # Common packages on all machines
   services.tailscale.enable = true;
   environment.systemPackages = with pkgs; [
@@ -85,6 +109,9 @@
     libreoffice-qt
     telegram-desktop
     remmina
+    virt-manager
+    virt-viewer
+    freerdp
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

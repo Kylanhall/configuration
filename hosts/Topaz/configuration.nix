@@ -80,7 +80,7 @@
     enable = true;
     mouse = {
       accelProfile = "flat";
-      accelSpeed = "-0.3";
+      accelSpeed = "0";
     };
   };
 
