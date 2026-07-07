@@ -52,13 +52,22 @@ I have a secrets.nix file to keep somewhat sensitive information..? It's not rea
 ```nix
 {
     username = "";
-    gitEmail = "";
     sshKeyName = "";
-    gitUser = "";
+    sshKeyName2 = "";
+    
+    github1 = "";
+    git1User = "";
+    git1Email = "";
+
+    github2 = "";
+    git2User = "";
+    git2Email = "";
+
     # Search for your location on https://wttr.in/
     # For New York City, it's New_York_City_NY or New+York+City
     weatherLocation = "";
 }
+
 ```
 
 ## Troubleshooting
