@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  secrets = import ../../nixos-local/secrets.nix;
+  secrets = import /etc/nix/secrets.nix;
 in
 {
   imports = [
@@ -18,6 +18,10 @@ in
   home.homeDirectory = "/home/${secrets.username}";
   home.file."code/.keep".text = "";
   home.stateVersion = "25.05";
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   # Save screenshot to clipboard
   xdg.configFile."spectaclerc".text = ''

@@ -66,6 +66,9 @@
     speedtest-go
     cifs-utils
     unzip
+    rsync
+    sshpass
+    iperf3
 
     # Programming Languages
     nixd
@@ -112,6 +115,7 @@
     virt-manager
     virt-viewer
     freerdp
+    slack
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

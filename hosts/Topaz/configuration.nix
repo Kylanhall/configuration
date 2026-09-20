@@ -45,10 +45,12 @@
   # Minecraft
   networking.firewall.allowedTCPPorts = [
     25565
+    5201
   ];
 
   networking.firewall.allowedUDPPorts = [
     25565
+    5201
   ];
 
   # Bluetooth

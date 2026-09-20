@@ -5,6 +5,15 @@
     shortcuts = {
       "spectacle"."RectangularRegionScreenshot" = ["Ctrl+Shift+4" "Meta+Shift+Print"];
       "krunner.desktop"."_launch" = [];
+      kwin = {
+        "Switch to Desktop 1" = "Alt+1";
+        "Switch to Desktop 2" = "Alt+2";
+        "Switch to Desktop 3" = "Alt+3";
+        "Switch to Desktop 4" = "Alt+4";
+      };
+    };
+    configFile = {
+      kwinrc.Desktops.Number = 4;
     };
     workspace = {
       wallpaper = "${config.home.homeDirectory}/.config/nixos/wallpapers/sonic.png";

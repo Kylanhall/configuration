@@ -3,6 +3,10 @@
   # ZSH Shell
   programs.zsh = {
     enable = true;
+
+    initExtra = ''
+      export PATH="$HOME/.local/bin:$PATH"
+    '';
     oh-my-zsh = {
         enable = true;
         theme = "agnoster";
