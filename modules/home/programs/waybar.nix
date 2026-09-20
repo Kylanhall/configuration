@@ -81,7 +81,7 @@ in
           "format": "⏻",
           "tooltip": false,
           "on-click": "wlogout"
-        }
+        },
         "tray": { "spacing": 8 }
       }
     ]
