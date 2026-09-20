@@ -80,7 +80,7 @@ in
         "custom/power": {
           "format": "⏻",
           "tooltip": false,
-          "on-click": "wlogout"
+          "on-click": "wlogout --buttons-per-row 4 --margin-left 700 --margin-right 700 --margin-top 400 --margin-bottom 400"
         },
         "tray": { "spacing": 8 }
       }
@@ -118,6 +118,12 @@ in
 
     window#waybar.top {
       background: #1e1f2e;
+      color: #f8f8f2;
+    }
+
+    #custom-power {
+      padding: 0 14px 0 12px;
+      margin-right: 8px;
       color: #f8f8f2;
     }
 

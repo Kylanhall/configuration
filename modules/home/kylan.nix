@@ -12,6 +12,7 @@ in
     ./programs/rofi.nix
     ./programs/swaync.nix
     ./programs/neovim.nix
+    ./programs/wlogout.nix
   ];
 
   home.username = secrets.username;
