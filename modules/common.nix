@@ -69,6 +69,7 @@
     rsync
     sshpass
     iperf3
+    wlogout
 
     # Programming Languages
     nixd

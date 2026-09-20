@@ -13,7 +13,7 @@ in
         "spacing": 6,
         "modules-left": ["custom/launcher", "custom/weather", "mpris" ],
         "modules-center": ["clock"],
-        "modules-right": [ "memory" , "network", "custom/tailscale", "pulseaudio", "tray", "custom/swaync" ],
+        "modules-right": [ "memory" , "network", "custom/tailscale", "pulseaudio", "tray", "custom/swaync", "custom/power" ],
         "clock": {
           "format": "{:%a %b %d  %I:%M:%S %p}",
           "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
@@ -77,6 +77,11 @@ in
           "interval": 1800,
           "tooltip": false
         },
+        "custom/power": {
+          "format": "⏻",
+          "tooltip": false,
+          "on-click": "wlogout"
+        }
         "tray": { "spacing": 8 }
       }
     ]
