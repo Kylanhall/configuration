@@ -14,4 +14,5 @@
   "applications:spotify.desktop"
   "applications:vesktop.desktop"
   "applications:Bolt.desktop"
+  "applications:Slack.desktop"
 ]

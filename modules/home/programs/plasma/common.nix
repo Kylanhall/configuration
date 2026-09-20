@@ -10,6 +10,11 @@
         "Switch to Desktop 2" = "Alt+2";
         "Switch to Desktop 3" = "Alt+3";
         "Switch to Desktop 4" = "Alt+4";
+
+        "Window to Desktop 1" = "Alt+Shift+1";
+        "Window to Desktop 2" = "Alt+Shift+2";
+        "Window to Desktop 3" = "Alt+Shift+3";
+        "Window to Desktop 4" = "Alt+Shift+4";
       };
     };
     configFile = {
