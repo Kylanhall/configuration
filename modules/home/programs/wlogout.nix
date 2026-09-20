@@ -6,7 +6,6 @@
   ];
 
   xdg.configFile."wlogout/layout".text = ''
-    [
       {
         "label": "lock",
         "action": "loginctl lock-session",
@@ -31,7 +30,6 @@
         "text": "Shutdown",
         "keybind": "s"
       }
-    ]
   '';
 
   xdg.configFile."wlogout/style.css".text = ''
